@@ -1,7 +1,6 @@
 <a name="readme-top"></a>
 <div align="center">
-  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-  <img src="./YonasL.webp" alt="logo" width="140"  height="auto" />
+![logo](./YonasL.webp)
   <br/>
 
   <h3><b>To do List</b></h3>
