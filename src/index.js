@@ -6,10 +6,12 @@ import {
   getTasks,
   toggleDeleteIcon,
   toggleEditMode,
+  clearCompletedTasks,
 } from './app.js';
 
+import { toggleStatus } from './status.js';
+
 const todoList = document.getElementById('todo-list');
-let tasks = getTasks();
 
 function renderTasks() {
   todoList.innerHTML = '';
@@ -30,6 +32,14 @@ function renderTasks() {
 }
       </td>
     `;
+
+    const checkbox = taskRow.querySelector('input[type="checkbox"]');
+    if (checkbox) {
+      checkbox.addEventListener('change', () => {
+        toggleStatus(index); // Toggle task status
+        renderTasks(); // Re-render tasks after updating status
+      });
+    }
 
     const kebabCell = document.createElement('td');
     kebabCell.className = 'kebab-icon';
@@ -80,6 +90,12 @@ function renderTasks() {
 
 renderTasks();
 
+const clearCompletedButton = document.getElementById('clearCompletedButton');
+clearCompletedButton.addEventListener('click', () => {
+  clearCompletedTasks();
+  renderTasks();
+});
+
 const newTodoInput = document.getElementById('newTodo');
 newTodoInput.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
@@ -100,10 +116,4 @@ addButton.addEventListener('click', () => {
     newTodoInput.value = '';
     renderTasks();
   }
-});
-
-const clearCompletedButton = document.getElementById('clearCompletedButton');
-clearCompletedButton.addEventListener('click', () => {
-  tasks = tasks.filter((task) => !task.completed);
-  renderTasks();
 });

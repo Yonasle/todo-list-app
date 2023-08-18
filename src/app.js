@@ -57,3 +57,10 @@ export function toggleEditMode(index, editMode = false) {
   });
   saveTasksToLocalStorage();
 }
+
+export function clearCompletedTasks() {
+  tasks = tasks.filter((task) => !task.completed);
+  saveTasksToLocalStorage();
+}
+
+export { saveTasksToLocalStorage };
