@@ -15,7 +15,7 @@ export function addTask(description) {
     description,
     completed: false,
     index: tasks.length + 1,
-    showDeleteIcon: false, 
+    showDeleteIcon: false,
     showEdit: false,
   };
   tasks.push(newTask);
