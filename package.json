@@ -1,7 +1,7 @@
 {
   "name": "clear",
   "version": "1.0.0",
-  "description": "",
+  "description": "<a name=\"readme-top\"></a>\r <div align=\"center\">",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode development --open",
