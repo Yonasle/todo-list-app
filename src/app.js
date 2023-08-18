@@ -22,9 +22,15 @@ export function addTask(description) {
   saveTasksToLocalStorage();
 }
 
+function updateIndexes() {
+  tasks.forEach((task, index) => {
+    task.index = index + 1;
+  });
+  saveTasksToLocalStorage();
+}
+
 export function deleteTask(index) {
   tasks = tasks.filter((task) => task.index !== index);
-  /* eslint-disable no-use-before-define */
   updateIndexes();
   saveTasksToLocalStorage();
 }
@@ -45,16 +51,9 @@ export function toggleDeleteIcon(index) {
   }
 }
 
-export function toggleEditMode(index) {
+export function toggleEditMode(index, editMode = false) {
   tasks.forEach((task, i) => {
-    task.showEdit = i === index;
-  });
-  saveTasksToLocalStorage();
-}
-
-function updateIndexes() {
-  tasks.forEach((task, index) => {
-    task.index = index + 1;
+    task.showEdit = i === index && editMode;
   });
   saveTasksToLocalStorage();
 }
